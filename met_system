@@ -1,0 +1,69 @@
+Pine Cluster Metadata System
+Pine is an active metadata system for HPC clusters. This system provides the ability to define projects with accompanying metadata. Then as data are produced, metadata are automatically created for all data within a project. With the metadata, the simulation data are then discoverable using a provided API . The system deploys a file watcher on each node in an HPC system, which use the inotify Linux API to watch for system events occurring within the project folders. Changes within the project folders are then reported to a centralized metadata server.
+
+Build
+To create the default build run
+
+make
+The build will create the following files:
+
+pine-metad: Pine metadata service
+pine-watchd: Pine filesystem watch daemon
+pine-cli: Pine CLI client
+libpine-client.so: Pine client shared library
+Debug build
+For a debug build run
+
+make DEBUG=1
+This will produced the same files as the default build.
+
+Python build
+The python pine client can be built as a .whl file using
+
+make python
+The resulting .whl file is located in python/dist and can be installed with pip using:
+
+pip install python/dist/pine_client-<version>-py3-none-any.whl
+Testing
+To run the included tests use
+
+make check
+You can enable debugging by providing the make option DEBUG=1. The tests can be built without running them using
+
+make tests
+Code Coverage
+Code test coverage can be obtained by using
+
+make check-coverage
+This will generatte the coverage/html/index.html file which contains the lcov generated code coverage report.
+
+Formatting
+The code can be autoformatted with clang-format using
+
+make format
+This should be used before making any git commits.
+
+TODOs
+The list of TODOs can be obtained by using
+
+make todo
+Feel free to take one of these items and address it. Once you're done remove the TODO from the code and commit for review.
+
+The TODO items can have a priority value assigned to it. The priority value is the (prio) prefix in the TODO statement, where prio is the priority value (0-4). The priority values are defined as below:
+
+0: Highest priority for major issue that needs immediate attention
+1: High priority (pending items to address)
+2: Medium priority (items that will need to be address)
+3: Low priority (items that we should address if time permits)
+4: Wish list (items we'd like to have, but can live without)
+Lines of code
+The number of lines of code in this project can be obtained with
+
+make cloc
+It's simply the total number (i.e., doesn't provide a breakdown per source file), but it's useful for easily tracking the over all project size.
+
+Ctags
+Ctags provide convenient code navigation within text editors (e.g., vim). To generate the tagsf file use
+
+make tags
+Once you generate the tags file you can navigate the source code using your editor (Ctags support in the editor is obviously required). If using vim, see :help ctags for help in using ctags in vim.
