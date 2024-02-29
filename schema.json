@@ -1,0 +1,25 @@
+{
+        "type": "object",
+        "properties": {
+                "program": { 
+                        "type": "string",
+                        "enum": ["Program_A", "Program_B", "Program_C"]
+                },
+                "products": { 
+                        "type": "array", 
+                        "items": {
+                                "type": "string",
+                                "enum": ["Product_A", "Product_B", "Product_C" ]
+                        }
+                },
+                "job_id": {
+                        "type": "string"
+                }
+        },
+        "defaults": {
+                "program": "Program_B",
+                "products": [ "Product_A", "Product_C" ]
+        },
+        "required": [ "program", "products" ],
+        "retain_on_export": [ "program" ]
+}
